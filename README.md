@@ -1,50 +1,123 @@
-# Welcome to your Expo app 👋
+# 💼 React Native Mini Mart App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A beautifully crafted mobile shopping experience that allows users to browse products, view details, add to cart, and manage favorites — built using **React Native** and **Zustand**.
 
-## Get started
+---
 
-1. Install dependencies
+## 📱 Features
 
-   ```bash
-   npm install
-   ```
+* 🏠 **Product Listing**: Grid view of products with images, prices, and names.
+* 🔍 **Search Functionality**: Real-time product filtering by name.
+* 📄 **Product Details**: Detailed view of each product with description.
+* 🛒 **Cart Management**: Add, remove, and update quantities of cart items.
+* ❤️ **Favorites System**: Mark/unmark products as favorites.
+* 🔔 **Toasts & Notifications**: Feedback when products are added to cart or favorites.
+* 🚀 **Smooth Navigation**: Intuitive flow between screens with a bottom navigation menu.
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🧱 Tech Stack
 
-In the output, you'll find options to open the app in a
+| Layer              | Technology                                                                  |
+| ------------------ | --------------------------------------------------------------------------- |
+| Framework          | [React Native](https://reactnative.dev/)                                    |
+| State Management   | [Zustand](https://github.com/pmndrs/zustand)                                |
+| Navigation         | [React Navigation](https://reactnavigation.org/)                            |
+| Persistent Storage | [AsyncStorage](https://github.com/react-native-async-storage/async-storage) |
+| UI Styling         | [StyleSheet, Tailwind](https://reactnative.dev/docs/style)                            |
+| Local Data Source  | Static `json`                                                        |
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🚀 Getting Started
 
-## Get a fresh project
+### 📦 Prerequisites
 
-When you're ready, run:
+* Node.js >= 14.x
+* Yarn or npm
+* Expo CLI (Recommended)
+
+  ```bash
+  npm install -g expo-cli
+  ```
+
+---
+
+### 🛠️ Installation
 
 ```bash
-npm run reset-project
+# Clone the repository
+git clone https://github.com/your-username/product-catalog-app.git
+
+# Navigate to the project directory
+cd product-catalog-app
+
+# Install dependencies
+yarn install
+# or
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+### ▶️ Run the App
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+# Start the Expo dev server
+expo start
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Then:
 
-## Join the community
+* Press `i` to open in iOS simulator (macOS only)
+* Press `a` to open in Android emulator
+* Scan the QR code using the Expo Go app on your physical device
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 📂 Folder Structure
+
+```
+/assets             → App assets (images, fonts)
+/components         → Shared UI components
+/screens            → All screen components (Home, Cart, Favorites and Profile)
+/store              → Zustand stores (cart, favorites)
+/data/products.ts   → Static product data
+/App.tsx            → App entry point
+```
+
+---
+
+## 🗂️ Screenshots
+
+| Home Screen                     | Product Details                       | Cart Page                       |
+| ------------------------------- | ------------------------------------- | ------------------------------- |
+| ![Home](./screenshots/home.png) | ![Details](./screenshots/details.png) | ![Cart](./screenshots/cart.png) |
+
+---
+
+## 🧠 State Management Overview
+
+Zustand is used to manage:
+
+* **Cart Items** with persistence (via AsyncStorage)
+* **Favorite Products**
+* **Total Cart Quantity & Subtotal**
+
+Each store includes selectors and actions for scalable and readable state updates.
+
+---
+
+## 📦 Static Product Data
+
+Products are sourced from a local file:
+`/data/products.ts`
+This avoids the need for any backend setup.
+
+---
+
+## 👨‍💻 Author
+
+**ANIAH MOSES LIPEUNIM (Devlipeunim)**
+[GitHub](https://github.com)
+# React-Native-MiniMart-App
