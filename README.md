@@ -47,10 +47,10 @@ A beautifully crafted mobile shopping experience that allows users to browse pro
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/product-catalog-app.git
+git clone https://github.com/devLipeunim/React-Native-MiniMart-App.git
 
 # Navigate to the project directory
-cd product-catalog-app
+cd React-Native-MiniMart-App
 
 # Install dependencies
 yarn install
