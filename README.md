@@ -1,6 +1,6 @@
 # 💼 React Native Mini Mart App
 
-A beautifully crafted mobile shopping experience that allows users to browse products, view details, add to cart, and manage favorites — built using **React Native** and **Zustand**.
+A beautifully crafted mobile shopping experience that allows users to browse products, view details, add to cart, manage favorites, and search — built using **React Native** and **Zustand**.
 
 ---
 
@@ -24,8 +24,8 @@ A beautifully crafted mobile shopping experience that allows users to browse pro
 | State Management   | [Zustand](https://github.com/pmndrs/zustand)                                |
 | Navigation         | [React Navigation](https://reactnavigation.org/)                            |
 | Persistent Storage | [AsyncStorage](https://github.com/react-native-async-storage/async-storage) |
-| UI Styling         | [StyleSheet, Tailwind](https://reactnative.dev/docs/style)                            |
-| Local Data Source  | Static `json`                                                        |
+| UI Styling         | [StyleSheet, Tailwind](https://reactnative.dev/docs/style)                  |
+| Local Data Source  | Static `products.json` file                                                 |
 
 ---
 
@@ -80,7 +80,7 @@ Then:
 ```
 /assets             → App assets (images, fonts)
 /components         → Shared UI components
-/screens            → All screen components (Home, Cart, Favorites and Profile)
+/screens            → All screen components (Home, Cart, Favorites, Profile)
 /store              → Zustand stores (cart, favorites)
 /data/products.ts   → Static product data
 /App.tsx            → App entry point
@@ -88,11 +88,11 @@ Then:
 
 ---
 
-## 🗂️ Screenshots
+## 🖼️ Screenshots
 
-| Home Screen                     | Product Details                       | Cart Page                       |
-| ------------------------------- | ------------------------------------- | ------------------------------- |
-| ![Home](./screenshots/home.png) | ![Details](./screenshots/details.png) | ![Cart](./screenshots/cart.png) |
+| Home                                                                                                                              | Details                                                                                                                              | Cart                                                                                                                              | Favorites                                 | Favorites Filled                              | Item added to cart                             | Item added to favorites                                 | Profile                                  |
+| --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | ----------------------------------- | --------------------------------- | --------------------------------------- | ------------------------------------------- |
+| ![Home](https://res.cloudinary.com/dgo34pzy5/image/upload/v1749121991/Screenshot_2025-06-05-12-04-46-876_com.miniMart_oostyc.jpg) | ![Details](https://res.cloudinary.com/dgo34pzy5/image/upload/v1749121991/Screenshot_2025-06-05-12-06-24-276_com.miniMart_mdudr5.jpg) | ![Cart](https://res.cloudinary.com/dgo34pzy5/image/upload/v1749121991/Screenshot_2025-06-05-12-05-53-891_com.miniMart_mmzafk.jpg) | ![Favorites](https://res.cloudinary.com/dgo34pzy5/image/upload/v1749121989/Screenshot_2025-06-05-12-05-59-815_com.miniMart_wkfq8v.jpg) | ![Favorites Filled](https://res.cloudinary.com/dgo34pzy5/image/upload/v1749121991/Screenshot_2025-06-05-12-06-47-449_com.miniMart_hnodlz.jpg) | ![Item added to cart](https://res.cloudinary.com/dgo34pzy5/image/upload/v1749121991/Screenshot_2025-06-05-12-06-38-162_com.miniMart_llbujx.jpg) | ![Item added to favorites ](https://res.cloudinary.com/dgo34pzy5/image/upload/v1749121991/Screenshot_2025-06-05-12-06-31-446_com.miniMart_abztge.jpg) | ![Profile](https://res.cloudinary.com/dgo34pzy5/image/upload/v1749121992/Screenshot_2025-06-05-12-06-54-556_com.miniMart_l1ce5b.jpg) |
 
 ---
 
@@ -119,5 +119,4 @@ This avoids the need for any backend setup.
 ## 👨‍💻 Author
 
 **ANIAH MOSES LIPEUNIM (Devlipeunim)**
-[GitHub](https://github.com)
-# React-Native-MiniMart-App
+[GitHub](https://github.com/devLipeunim/React-Native-MiniMart-App)

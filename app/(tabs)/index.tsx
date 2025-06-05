@@ -1,75 +1,118 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import BackHeader from "@/components/headers/BackHeader";
+import FrontHeader from "@/components/headers/FrontHeader";
+import {
+  BoldText,
+  MediumText,
+  RegularTextWithLineHeight,
+} from "@/components/Texts";
+import Wrapper from "@/components/Wrapper";
+import { Colors } from "@/constants/Colors";
+import { products } from "@/data/products";
+import { Product } from "@/types";
+import { Feather } from "@expo/vector-icons";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
+import { Image } from "expo-image";
+import React, { useState } from "react";
+import { SafeAreaView, TextInput, TouchableOpacity, View } from "react-native";
+import Animated, { ZoomInLeft } from "react-native-reanimated";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const Home = () => {
+  const navigation = useNavigation();
+  const isScreenFocused = useIsFocused();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
 
-export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  const renderProduct = ({ item }: { item: Product }) => (
+    <TouchableOpacity
+      className=""
+      onPress={() =>
+        // @ts-ignore
+        navigation.navigate("productDetails/index", { data: item })
+      }
+    >
+      <Image
+        style={{ width: 152, height: 152, borderRadius: 8.62, marginBottom: 3 }}
+        contentFit="contain"
+        transition={1000}
+        source={item.image}
+      />
+
+      <RegularTextWithLineHeight value={item.name} className="w-[152px]" />
+      <BoldText value={`$${item.price.toFixed(2)}`} />
+    </TouchableOpacity>
   );
-}
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  return (
+    <Wrapper>
+      <SafeAreaView className="flex-1 bg-white">
+        <FrontHeader />
+
+        <View className="w-[95%] mx-auto pl-1 pr-1 mb-1">
+          <View
+            style={{ paddingHorizontal: 12 }}
+            className={`flex-row items-center border rounded-[5px] h-[36px] mb-3 ${
+              isFocused ? "border-[#60B5FF]" : "border-[#E2E8F0]"
+            }`}
+          >
+            <Feather name="search" size={20} color="#94A3B8" className="mr-2" />
+            <TextInput
+              placeholder="Search..."
+              value={searchTerm}
+              onChangeText={setSearchTerm}
+              onFocus={() => setIsFocused(true)}
+              cursorColor={Colors.primary.blue}
+              onBlur={() => setIsFocused(false)}
+              className={`flex-1 text-black text-[14px]`}
+              style={{
+                fontFamily: "IBMPlexSansRegular",
+              }}
+              placeholderTextColor="#CBD5E1"
+            />
+          </View>
+        </View>
+
+        <BackHeader title="Technology" />
+
+        <View className="w-full bg-[#FBFBFB] mt-3">
+          {filteredProducts.length > 0 && (
+            <View className="w-[95%] mx-auto pl-1 pr-1 mb-4">
+              <MediumText
+                fontSize={18}
+                value="Smartphones, Laptops & accessories"
+              />
+            </View>
+          )}
+
+          <View className="w-[90%] mx-auto pl-1 pr-1">
+            {filteredProducts.length === 0 ? (
+              <View className="flex-col items-center justify-center">
+                <MediumText fontSize={16} value="No results found" />
+              </View>
+            ) : (
+              <Animated.FlatList
+                key={isScreenFocused ? "focused" : "unfocused"}
+                entering={ZoomInLeft.duration(1000)}
+                data={filteredProducts}
+                keyExtractor={(item) => item.id}
+                renderItem={renderProduct}
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{ paddingBottom: 300 }}
+                columnWrapperStyle={{
+                  width: "100%",
+                  justifyContent: "space-between",
+                  marginBottom: 15,
+                }}
+                numColumns={2}
+              />
+            )}
+          </View>
+        </View>
+      </SafeAreaView>
+    </Wrapper>
+  );
+};
+
+export default Home;

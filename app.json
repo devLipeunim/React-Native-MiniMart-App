@@ -1,21 +1,23 @@
 {
   "expo": {
-    "name": "miniMartTask",
-    "slug": "miniMartTask",
+    "name": "Mini Mart",
+    "slug": "miniMart",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "minimarttask",
+    "scheme": "minimart",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.miniMart"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "package": "com.miniMart",
       "edgeToEdgeEnabled": true
     },
     "web": {
